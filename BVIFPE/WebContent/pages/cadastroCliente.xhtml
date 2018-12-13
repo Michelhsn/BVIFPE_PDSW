@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/templates/templatePadrao.xhtml">
+	<ui:define name="conteudo">
+            <f:event listener="#{cadastroClientesBean.carregaCadastro}" type="preRenderView"></f:event>
+		<p:toolbar>
+			<f:facet name="left">
+				<p:outputLabel value="Usuarios"></p:outputLabel>
+			</f:facet>
+		</p:toolbar>
+		<h:form id="formu">
+                    <p:panelGrid id="panel" columns="2">
+			<p:outputLabel value="Nome: "></p:outputLabel>
+                        <p:inputText value="#{cadastroClientesBean.nome}"></p:inputText>
+                        
+                        <p:outputLabel value="CPF: "></p:outputLabel>
+                        <p:inputText value="#{cadastroClientesBean.cpf}"></p:inputText>
+                        
+                        <p:outputLabel value="Email: "></p:outputLabel>
+                        <p:inputText value="#{cadastroClientesBean.email}"></p:inputText>
+                        
+                        <p:outputLabel value="Login: "></p:outputLabel>
+                        <p:inputText value="#{cadastroClientesBean.login}"></p:inputText>
+                        
+                        <p:outputLabel value="Senha: "></p:outputLabel>
+                        <p:inputText value="#{cadastroClientesBean.senha}"></p:inputText>
+                        </p:panelGrid>
+                    
+                        <p:panelGrid columns="2">
+                            <p:commandButton rendered="#{!(cadastroClientesBean.acao eq 'editar') and !(cadastroClientesBean.acao eq 'excluir')}" value="Salvar" 
+                                             actionListener="#{cadastroClientesBean.salvar}" update=":msg,:formu:panel"></p:commandButton>
+                            <p:commandButton rendered="#{cadastroClientesBean.acao eq 'editar'}" value="Alterar" 
+                                             actionListener="#{cadastroClientesBean.editar}" update=":msg,:formu:panel"></p:commandButton>
+                            <p:commandButton rendered="#{cadastroClientesBean.acao eq 'excluir'}" value="Excluir" 
+                                             actionListener="#{cadastroClientesBean.excluir}" update=":msg,:formu:panel"></p:commandButton>
+                            <p:commandButton value="Voltar" 
+                                             action="/pages/consultaUsuario.xhtml?faces-redirect=true"></p:commandButton>
+                        </p:panelGrid>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>

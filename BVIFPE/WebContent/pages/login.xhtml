@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+	<ui:composition template="/templates/templatePadrao.xhtml">
+		<ui:define name="conteudo">
+                    
+                        
+                        <p:toolbar>
+			<f:facet name="left">
+				<p:outputLabel value="Login"></p:outputLabel>
+			</f:facet>
+                            </p:toolbar>
+                    <h:form id="formu">
+                            <p:panelGrid columns="2">
+                                <p:outputLabel value="Login: "></p:outputLabel>
+                                <p:inputText value="#{loginBean.usuario.login}"></p:inputText>
+                                
+                                <p:outputLabel value="Senha: "></p:outputLabel>
+                                <p:password value="#{loginBean.usuario.senha}"></p:password>
+                            </p:panelGrid>
+                            
+                            <p:panelGrid columns="1">
+                                <p:commandButton value="Logar" update=":msg, :formu, :mainForm:mainMenu" actionListener="#{loginBean.logar()}"></p:commandButton>
+                            </p:panelGrid>
+		
+                    </h:form>
+		</ui:define>
+	
+	</ui:composition>
+</html>

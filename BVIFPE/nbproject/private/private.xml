@@ -3,11 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/miche/Desktop/BVIFPE/src/modelo/bvifpe/Cliente.java</file>
-            <file>file:/C:/Users/miche/Desktop/BVIFPE/src/testes/bvifpe/GeraTabela.java</file>
-            <file>file:/C:/Users/miche/Desktop/BVIFPE/src/testes/bvifpe/Teste.java</file>
-            <file>file:/C:/Users/miche/Desktop/BVIFPE/src/modelo/bvifpe/Livro.java</file>
-            <file>file:/C:/Users/miche/Desktop/BVIFPE/src/testes/bvifpe/LivroDAOTeste.java</file>
+            <file>file:/C:/Users/miche/Desktop/1/BVIFPE_PDSW/BVIFPE/src/modelo/bvifpe/Livro.java</file>
+            <file>file:/C:/Users/miche/Desktop/1/BVIFPE_PDSW/BVIFPE/src/testes/bvifpe/LivroDAOTeste.java</file>
+            <file>file:/C:/Users/miche/Desktop/1/BVIFPE_PDSW/BVIFPE/WebContent/templates/templatePadrao.xhtml</file>
+            <file>file:/C:/Users/miche/Desktop/1/BVIFPE_PDSW/BVIFPE/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/miche/Desktop/1/BVIFPE_PDSW/BVIFPE/src/DAO/bvifpe/LivroDAO.java</file>
+            <file>file:/C:/Users/miche/Desktop/1/BVIFPE_PDSW/BVIFPE/WebContent/pages/consultaLivro.xhtml</file>
+            <file>file:/C:/Users/miche/Desktop/1/BVIFPE_PDSW/BVIFPE/src/gerenciamento/bvifpe/ConsultaLivrosBean.java</file>
+            <file>file:/C:/Users/miche/Desktop/1/BVIFPE_PDSW/BVIFPE/src/testes/bvifpe/GeraTabela.java</file>
         </group>
     </open-files>
 </project-private>

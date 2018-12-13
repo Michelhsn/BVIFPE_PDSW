@@ -8,14 +8,37 @@
 
 <ui:composition template="/templates/templatePadrao.xhtml">
 	<ui:define name="conteudo">
+            <f:event listener="#{cadastroLivroBean.carregaCadastro}" type="preRenderView"></f:event>
 		<p:toolbar>
 			<f:facet name="left">
 				<p:outputLabel value="Livros"></p:outputLabel>
 			</f:facet>
 		</p:toolbar>
-		<h:form>
-			<p:outputLabel value="Código: "></p:outputLabel>
-
+		<h:form id="formu">
+                    <p:panelGrid id="panel" columns="2">
+			<p:outputLabel value="Autor: "></p:outputLabel>
+                        <p:inputText required="true" readonly="#{cadastroLivroBean.acao eq 'excluir'}" value="#{cadastroLivroBean.autor}"></p:inputText>
+                        
+                        <p:outputLabel value="Ano: "></p:outputLabel>
+                        <p:inputText value="#{cadastroLivroBean.ano}"></p:inputText>
+                        
+                        <p:outputLabel value="Titulo: "></p:outputLabel>
+                        <p:inputText value="#{cadastroLivroBean.titulo}"></p:inputText>
+                        
+                        <p:outputLabel value="Qtd em Estoque: "></p:outputLabel>
+                        <p:inputText value="#{cadastroLivroBean.estoque}"></p:inputText>
+                        </p:panelGrid>
+                    
+                        <p:panelGrid columns="2">
+                            <p:commandButton value="Salvar" rendered="#{!(cadastroLivroBean.acao eq 'editar') and !(cadastroLivroBean.acao eq 'excluir')}" 
+                                             actionListener="#{cadastroLivroBean.salvar}" update=":msg,:formu:panel"></p:commandButton>
+                            <p:commandButton rendered="#{cadastroLivroBean.acao eq 'editar'}" value="Alterar" 
+                                             actionListener="#{cadastroLivroBean.editar}" update=":msg,:formu:panel"></p:commandButton>
+                            <p:commandButton rendered = "#{cadastroLivroBean.acao eq 'excluir'}" value="Excluir" 
+                                             actionListener="#{cadastroLivroBean.excluir}" update=":msg,:formu:panel"></p:commandButton>
+                            <p:commandButton value="Voltar" 
+                                             action="/pages/consultaLivro.xhtml?faces-redirect=true"></p:commandButton>
+                        </p:panelGrid>
 		</h:form>
 	</ui:define>
 

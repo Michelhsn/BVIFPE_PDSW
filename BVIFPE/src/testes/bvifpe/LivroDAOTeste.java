@@ -9,7 +9,6 @@ import DAO.bvifpe.LivroDAO;
 import modelo.bvifpe.Livro;
 
 public class LivroDAOTeste {
-	@Test
 	public void salvarLivroTeste() throws Exception{
 		Livro livro = new Livro();
 		livro.setAno("2000");
@@ -18,8 +17,6 @@ public class LivroDAOTeste {
 		dao.salvarLivro(livro);
 	}
 	
-	@Test
-	@Ignore
 	public void listar(){
 		LivroDAO dao = new LivroDAO();
 		List<Livro> livros = dao.listarLivros();
@@ -30,8 +27,6 @@ public class LivroDAOTeste {
 		
 	}
 	
-	@Test
-	@Ignore
 	public void listarPorCodigo(){
 		LivroDAO dao = new LivroDAO();
 		Livro livro = dao.listarLivrosPorCodigo(1L);
@@ -40,8 +35,6 @@ public class LivroDAOTeste {
 		
 	}
 	
-	@Test
-        @Ignore
 	public void excluirLivro() throws Exception{
 		LivroDAO dao = new LivroDAO();
 		Livro livro = dao.listarLivrosPorCodigo(1L);

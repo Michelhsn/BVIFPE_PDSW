@@ -1,6 +1,7 @@
 package DAO.bvifpe;
 
 import java.util.List;
+import javax.inject.Inject;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -31,29 +32,29 @@ public class LivroDAO {
 			System.out.println(ex.toString());
 		} finally {
 			entityManager.close();
+                        System.out.println("fechando");
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
 	public List<Livro> listarLivros(){
 		EntityManager entityManager = JPAUtil.obterConexao();
-		entityManager.getTransaction().begin();
+		
 		List<Livro> livros = null;
 		try{
 			Query consulta = entityManager.createNamedQuery("Livro.listar");
 			livros = consulta.getResultList();
 		} catch(Exception ex){
 		}finally{
+                    
 			entityManager.close();
+                        System.out.println("fechando");
 		}
 		
 		return livros;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public Livro listarLivrosPorCodigo(Long id){
 		EntityManager entityManager = JPAUtil.obterConexao();
-		entityManager.getTransaction().begin();
 		Livro livro = null;
 		try{
 			Query consulta = entityManager.createNamedQuery("Livro.listarPorCodigo");
@@ -62,6 +63,7 @@ public class LivroDAO {
 		} catch(Exception ex){
 		}finally{
 			entityManager.close();
+                        System.out.println("fechando");
 		}
 		
 		return livro;
@@ -77,6 +79,7 @@ public class LivroDAO {
 			System.out.println(ex.toString());
 		} finally {
 			entityManager.close();
+                        System.out.println("fechando");
 		}
 	}
 	
@@ -86,13 +89,17 @@ public class LivroDAO {
 		try {
 			Livro livroEditado = listarLivrosPorCodigo(livro.getId());
 			livroEditado.setAno(livro.getAno()); 
+                        livroEditado.setAutor(livro.getAutor());
+                        livroEditado.setEstoque(livro.getEstoque());
+                        livroEditado.setTitulo(livro.getTitulo());
 			entityManager.getTransaction().begin();
-			entityManager.merge(livroEditado);
+			entityManager.merge(livro);
 			entityManager.getTransaction().commit();
 		} catch (Exception ex) {
 			System.out.println(ex.toString());
 		} finally {
 			entityManager.close();
+                        System.out.println("fechando");
 		}
 	}
 	

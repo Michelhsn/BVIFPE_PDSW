@@ -22,24 +22,29 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "TB_Usuario")
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "DISC_Usuario",
-        discriminatorType = DiscriminatorType.STRING, length = 1)
-@Access(AccessType.FIELD)
-public abstract class Usuario implements Serializable{
+//@Inheritance(strategy = InheritanceType.JOINED)
+//@DiscriminatorColumn(name = "DISC_Usuario",
+//        discriminatorType = DiscriminatorType.STRING, length = 1)
+//@Access(AccessType.FIELD)
+@NamedQueries({@NamedQuery(name = "Usuario.listar", query = "SELECT u From Usuario u"),
+@NamedQuery(name = "Usuario.listarPorCodigo", query = "SELECT u From Usuario u WHERE u.id = :id"),
+@NamedQuery(name = "Usuario.autenticar", query = "SELECT u From Usuario u WHERE u.login = :login AND u.senha=:senha")})
+public class Usuario implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "FK_ENDERECO", referencedColumnName = "ID")
-	private Endereco endereco;
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name = "FK_ENDERECO", referencedColumnName = "ID")
+//	private Endereco endereco;
 	
     @Column(name = "TXT_NOME")
     private String nome;

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -8,28 +8,47 @@
 
 	<ui:composition template="/templates/templatePadrao.xhtml">
 		<ui:define name="conteudo">
-			<h:form>
+                    <f:event listener="#{consultaLivrosBean.consultaLivros}" type="preRenderView"></f:event>
+			<h:form id="formu">
 				<p:toolbar>
 					<f:facet name="left">
 						<p:outputLabel value="Livros"></p:outputLabel>
 					</f:facet>
 				</p:toolbar>
-				<h:panelGrid columns="3">
-					<p:outputLabel value="Código: " />
-					<p:inputText size = "20" />
-					<p:commandButton value="Pesquisar" />
-				</h:panelGrid>
-				<p:dataTable emptyMessage="Nenhum registro encontrado.">
-					<p:column headerText="Código">
+				
+                            <p:dataTable  id="dt" emptyMessage="NÃ£o existem dados cadastrados." value="#{consultaLivrosBean.livros}" var="livro" 
+                                          rows="10" paginator="true">
+                                <p:column headerText="Codigo" filterBy="#{livro.id}">
+                                    <h:outputText value="#{livro.id}"></h:outputText>
 					</p:column>
 					<p:column headerText="Autor">
+                                            <h:outputText value="#{livro.autor}"></h:outputText>
 					</p:column>
-					<p:column headerText="Título">
+                                        <p:column headerText="Titulo" filterBy="#{livro.titulo}">
+                                            <h:outputText value="#{livro.titulo}"></h:outputText>
 					</p:column>
 					<p:column headerText="Ano">
+                                            <h:outputText value="#{livro.ano}"></h:outputText>
 					</p:column>
 					<p:column headerText="Qtd.">
+                                            <h:outputText value="#{livro.estoque}"></h:outputText>
 					</p:column>
+                                        <p:column style="width: 30%" headerText="AÃ§Ãµes">
+                                            <p:commandButton action="/pages/cadastroLivro.xhtml" icon="ui-icon-pencil"  >
+                                                <f:param name="acao" value="editar"></f:param>
+                                                <f:param name="cod" value="#{livro.id}"></f:param>
+                                            </p:commandButton>
+                                            <p:commandButton action="/pages/cadastroLivro.xhtml" icon="ui-icon-closethick"  >
+                                                <f:param name="acao" value="excluir"></f:param>
+                                                <f:param name="cod" value="#{livro.id}"></f:param>
+                                            </p:commandButton>
+                                            <p:commandButton update=":msg, :formu:dt" actionListener="#{cadastroLivroBean.emprestar}"  value="Emprestar">
+                                                <f:param name="cod" value="#{livro.id}"></f:param>
+                                            </p:commandButton>
+                                            <p:commandButton update=":msg, :formu:dt" actionListener="#{cadastroLivroBean.devolver}"  value="Devolver">
+                                                <f:param name="cod" value="#{livro.id}"></f:param>
+                                            </p:commandButton>
+                                        </p:column>
 				</p:dataTable>
 			</h:form>
 		</ui:define>

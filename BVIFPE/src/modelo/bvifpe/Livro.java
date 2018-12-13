@@ -50,7 +50,7 @@ public class Livro implements Serializable{
     private String sinopse;
             
     @Column(name= "QTD_estoque", nullable = true)
-    private String estoque;
+    private Integer estoque;
 
 	public Long getId() {
 		return id;
@@ -117,11 +117,11 @@ public class Livro implements Serializable{
 		this.sinopse = sinopse;
 	}
 
-	public String getEstoque() {
+	public Integer getEstoque() {
 		return estoque;
 	}
 
-	public void setEstoque(String estoque) {
+	public void setEstoque(Integer estoque) {
 		this.estoque = estoque;
 	}
     

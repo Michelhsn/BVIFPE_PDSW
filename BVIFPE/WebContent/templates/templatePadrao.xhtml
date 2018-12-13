@@ -10,34 +10,32 @@
 	<title>BVIFPE</title>
 </h:head>
 <h:body>
+    <p:growl id="msg"></p:growl>
 	<p:layout fullPage="true">
 
 		<p:layoutUnit position="north" size="100"
 			header="Biblioteca Virtual IFPE" resizable="true" closable="false"
 			collapsible="false">
-			<h:outputText value="Título / Figura" />
 		</p:layoutUnit>
 
 		<p:layoutUnit position="south" size="100"
-			header="Desenvolvido por: Dayvid, João e Michel" resizable="true"
+			header="Desenvolvido por: Michel e Dayvid" resizable="true"
 			closable="false" collapsible="false">
-			<h:outputText value="Biblioteca Virtual IFPE" />
 		</p:layoutUnit>
 
 		<p:layoutUnit position="west" size="200" header="Menu"
 			resizable="true" closable="false" collapsible="false">
-			<h:form>
-			<p:panelMenu>
+                    <h:form id="mainForm">
+                        <p:panelMenu id="mainMenu">
 				<p:submenu label="Início" >
 					<p:menuitem value="Página Inicial" outcome="/pages/inicio.xhtml"/>
 				</p:submenu>
-				<p:submenu label="Cadastro">
-					<p:menuitem value="Administrador"/>
-					<p:menuitem value="Cliente" />
-					<p:menuitem value="Livro" />
+                            <p:submenu rendered="#{loginBean.usuario.login != null}" label="Cadastro">
+					<p:menuitem value="Cliente" outcome="/pages/cadastroCliente.xhtml"/>
+                                        <p:menuitem value="Livro" outcome="/pages/cadastroLivro.xhtml" />
 				</p:submenu>
-				<p:submenu label="Consulta">
-					<p:menuitem value="Cliente" />
+                            <p:submenu rendered="#{loginBean.usuario.login != null}" label="Consulta">
+					<p:menuitem value="Cliente" outcome="/pages/consultaCliente.xhtml"/>
 					<p:menuitem value="Livro" outcome="/pages/consultaLivro.xhtml" />
 				</p:submenu>
 			</p:panelMenu>
